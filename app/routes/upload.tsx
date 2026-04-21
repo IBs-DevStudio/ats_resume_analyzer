@@ -60,7 +60,7 @@ const Upload = () => {
         await kv.set(`resume:${uuid}`, JSON.stringify(data));
         setStatusText('Analysis complete, redirecting...');
         console.log(data);
-        // navigate(`/resume/${uuid}`);
+        navigate(`/resume/${uuid}`);
     }
     
 
@@ -84,7 +84,7 @@ const Upload = () => {
             <Navbar />
 
             <section className="main-section">
-                <div className="page-heading py-16">
+                <div className="page-heading py-2">
                     <h1>Smart feedback for your dream job</h1>
                     {isProcessing ? (
                         <>
