@@ -244,3 +244,16 @@ export const prepareInstructions = ({
   Provide the feedback using the following format: ${AIResponseFormat}
   Return the analysis as a JSON object, without any other text and without the backticks.
   Do not include any other text or comments.`;
+
+export const MinimalAIResponseFormat = `
+      interface MinimalFeedback {
+        score: number; // max 100 overall score
+        tip: string; // one highly impactful sentence about what to improve
+      }`;
+
+export const prepareMinimalInstructions = () =>
+  `You are an expert in ATS (Applicant Tracking System) and resume analysis.
+  Briefly analyze this resume and provide a quick score and a single, highly impactful tip for improvement.
+  Provide the feedback using the exact following format: ${MinimalAIResponseFormat}
+  Return the analysis strictly as a JSON object, without any other text, markdown formatting, or backticks.
+  Do not include any other text or comments.`;
