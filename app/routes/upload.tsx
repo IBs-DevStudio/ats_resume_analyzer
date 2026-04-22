@@ -51,7 +51,7 @@ const steps = [
 ];
 
 const Upload = () => {
-    const { auth, isLoading, fs, ai, kv } = usePuterStore();
+    const { auth, fs, ai, kv } = usePuterStore();
     const navigate = useNavigate();
     const [isProcessing, setIsProcessing] = useState(false);
     const [statusText, setStatusText] = useState('');
@@ -64,6 +64,10 @@ const Upload = () => {
         companyName: string, jobTitle: string, jobDescription: string, file: File
     }) => {
         setIsProcessing(true);
+
+        // ✅ get userId for scoping KV keys
+        const userId = auth.user?.uuid;
+        if (!userId) return setStatusText('Error: Not authenticated');
 
         setCurrentStep(0); setStatusText('Uploading the file...');
         const uploadedFile = await fs.upload([file]);
@@ -86,7 +90,9 @@ const Upload = () => {
             companyName, jobTitle, jobDescription,
             feedback: '',
         };
-        await kv.set(`resume:${uuid}`, JSON.stringify(data));
+
+        // ✅ scoped to user: resume:{userId}:{uuid}
+        await kv.set(`resume:${userId}:${uuid}`, JSON.stringify(data));
 
         setCurrentStep(4); setStatusText('Analyzing...');
         const feedback = await ai.feedback(
@@ -100,7 +106,9 @@ const Upload = () => {
             : feedback.message.content[0].text;
 
         data.feedback = JSON.parse(feedbackText);
-        await kv.set(`resume:${uuid}`, JSON.stringify(data));
+
+        // ✅ update with same scoped key
+        await kv.set(`resume:${userId}:${uuid}`, JSON.stringify(data));
         setStatusText('Analysis complete, redirecting...');
         navigate(`/resume/${uuid}`);
     };
@@ -126,46 +134,34 @@ const Upload = () => {
                     display: 'flex', flexDirection: 'column', alignItems: 'center',
                     padding: '48px 16px 80px',
                 }}>
-                    {/* Page heading */}
                     <div style={{ textAlign: 'center', maxWidth: 600, marginBottom: 40 }}>
                         <div className="sky-tag" style={{ marginBottom: 16 }}>ATS Resume Scanner</div>
                         <h1 style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontWeight: 400, marginBottom: 12 }}>
                             Smart feedback for<br />your dream job
                         </h1>
-                        <p style={{
-                            color: '#475467', fontSize: 16, lineHeight: 1.7,
-                            fontFamily: "'Plus Jakarta Sans', sans-serif"
-                        }}>
+                        <p style={{ color: '#475467', fontSize: 16, lineHeight: 1.7, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                             Drop your resume and job description — get an instant ATS score and actionable improvement tips.
                         </p>
                     </div>
 
-                    {/* Processing state */}
                     {isProcessing ? (
                         <div style={{
-                            background: '#ffffff',
-                            border: '1.5px solid #e2e8f0',
-                            borderRadius: 20,
-                            padding: '48px 40px',
-                            width: '100%',
-                            maxWidth: 520,
-                            boxShadow: '0 4px 24px rgba(14,165,233,0.08)',
-                            textAlign: 'center',
+                            background: '#ffffff', border: '1.5px solid #e2e8f0',
+                            borderRadius: 20, padding: '48px 40px',
+                            width: '100%', maxWidth: 520,
+                            boxShadow: '0 4px 24px rgba(14,165,233,0.08)', textAlign: 'center',
                         }}>
                             <img src="/images/resume-scan.gif" style={{ width: 120, margin: '0 auto 24px', display: 'block', opacity: 0.85 }} />
                             <p style={{
                                 fontFamily: "'Plus Jakarta Sans', sans-serif",
-                                fontWeight: 600, fontSize: 16,
-                                color: '#0f172a', marginBottom: 24
+                                fontWeight: 600, fontSize: 16, color: '#0f172a', marginBottom: 24
                             }}>Analyzing your resume...</p>
 
-                            {/* Step indicators */}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, textAlign: 'left' }}>
                                 {steps.map((step, i) => (
                                     <div key={step.key} style={{
                                         display: 'flex', alignItems: 'center', gap: 12,
-                                        padding: '10px 14px',
-                                        borderRadius: 10,
+                                        padding: '10px 14px', borderRadius: 10,
                                         background: i === currentStep ? '#f0f8ff' : 'transparent',
                                         border: i === currentStep ? '1px solid #bae6fd' : '1px solid transparent',
                                         transition: 'all 0.3s'
@@ -191,54 +187,33 @@ const Upload = () => {
                             </div>
                         </div>
                     ) : (
-                        /* Form card */
                         <div style={{
-                            background: '#ffffff',
-                            border: '1.5px solid #e2e8f0',
-                            borderRadius: 20,
-                            padding: '40px',
-                            width: '100%',
-                            maxWidth: 580,
+                            background: '#ffffff', border: '1.5px solid #e2e8f0',
+                            borderRadius: 20, padding: '40px',
+                            width: '100%', maxWidth: 580,
                             boxShadow: '0 4px 24px rgba(14,165,233,0.07)',
                         }}>
-                            <form id="upload-form" onSubmit={handleSubmit} style={{
-                                display: 'flex', flexDirection: 'column', gap: 20
-                            }}>
-                                {/* Two col row */}
+                            <form id="upload-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                                     <div className="form-div">
                                         <label htmlFor="company-name">Company Name</label>
-                                        <input
-                                            type="text" name="company-name"
-                                            placeholder="e.g. Google" id="company-name"
-                                        />
+                                        <input type="text" name="company-name" placeholder="e.g. Google" id="company-name" />
                                     </div>
                                     <div className="form-div">
                                         <label htmlFor="job-title">Job Title</label>
-                                        <input
-                                            type="text" name="job-title"
-                                            placeholder="e.g. Frontend Engineer" id="job-title"
-                                        />
+                                        <input type="text" name="job-title" placeholder="e.g. Frontend Engineer" id="job-title" />
                                     </div>
                                 </div>
-
                                 <div className="form-div">
                                     <label htmlFor="job-description">Job Description</label>
-                                    <textarea
-                                        rows={6} name="job-description"
-                                        placeholder="Paste the full job description here..."
-                                        id="job-description"
-                                    />
+                                    <textarea rows={6} name="job-description" placeholder="Paste the full job description here..." id="job-description" />
                                 </div>
-
                                 <div className="form-div">
                                     <label htmlFor="uploader">Upload Resume (PDF)</label>
                                     <FileUploader onFileSelect={handleFileSelect} />
                                 </div>
-
                                 <button
-                                    className="primary-button"
-                                    type="submit"
+                                    className="primary-button" type="submit"
                                     style={{ width: '100%', justifyContent: 'center', fontSize: 15, padding: '13px' }}
                                 >
                                     Analyze Resume

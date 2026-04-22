@@ -68,19 +68,27 @@ export default function Home() {
   const [loadingResumes, setLoadingResumes] = useState(false);
 
   useEffect(() => {
-    if(!auth.isAuthenticated) navigate('/auth?next=/');
+    if(!auth.isAuthenticated) navigate('/auth?next=/dashboard');
   }, [auth.isAuthenticated]);
 
   useEffect(() => {
     const loadResumes = async () => {
       setLoadingResumes(true);
-      const resumes = (await kv.list('resume:*', true)) as KVItem[];
+
+      // ✅ scope to current user
+      const userId = auth.user?.uuid;
+      if (!userId) {
+        setLoadingResumes(false);
+        return;
+      }
+
+      const resumes = (await kv.list(`resume:${userId}:*`, true)) as KVItem[];
       const parsedResumes = resumes?.map((resume) => JSON.parse(resume.value) as Resume);
       setResumes(parsedResumes || []);
       setLoadingResumes(false);
     };
     loadResumes();
-  }, []);
+  }, [auth.user?.uuid]);  // ✅ re-run when user changes
 
   return (
     <div style={{ minHeight: '100vh', position: 'relative' }}>

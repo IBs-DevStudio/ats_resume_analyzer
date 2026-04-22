@@ -1,97 +1,102 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
+import { useState } from "react";
 
 const Navbar = () => {
-    return (
-        <nav style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: '#ffffff',
-            borderBottom: '1px solid #e2e8f0',
-            padding: '0 48px',
-            height: 64,
-            width: '100%',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 100,
-            boxShadow: '0 1px 6px rgba(0,0,0,0.06)',
-            boxSizing: 'border-box',
-        }}>
-            {/* Logo */}
-            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div style={{
-                    width: 32, height: 32,
-                    background: 'linear-gradient(135deg, #0ea5e9, #1d6fdc)',
-                    borderRadius: 8,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    flexShrink: 0
-                }}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 4h10M3 8h7M3 12h5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                </div>
-                <span style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontWeight: 800,
-                    fontSize: 20,
-                    letterSpacing: '-0.02em',
-                    color: '#0f172a',
-                }}>Atsync</span>
-            </Link>
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-            {/* Center links */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 2, position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
-                {[
-                    { label: 'Dashboard', to: '/' },
-                    { label: 'ATS Resume', to: '/upload' },
-                    { label: 'Insights', to: '/' },
-                    { label: 'Pricing', to: '/' },
-                ].map(({ label, to }) => (
-                    <Link key={label} to={to} style={{
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontSize: 14,
-                        fontWeight: 500,
-                        color: '#334155',
-                        padding: '8px 14px',
-                        borderRadius: 6,
-                        textDecoration: 'none',
-                        transition: 'background 0.15s, color 0.15s',
-                        whiteSpace: 'nowrap',
-                    }}
-                    onMouseEnter={e => {
-                        (e.target as HTMLElement).style.background = '#f0f8ff';
-                        (e.target as HTMLElement).style.color = '#0ea5e9';
-                    }}
-                    onMouseLeave={e => {
-                        (e.target as HTMLElement).style.background = 'transparent';
-                        (e.target as HTMLElement).style.color = '#334155';
-                    }}>
-                        {label}
-                    </Link>
-                ))}
-            </div>
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white border-b border-slate-200 h-16 w-full flex items-center justify-between px-4 md:px-12 shadow-[0_1px_6px_rgba(0,0,0,0.06)]">
+      {/* Logo */}
+      <Link to="/" className="flex items-center gap-2 no-underline">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0ea5e9] to-[#1d6fdc] flex items-center justify-center shrink-0">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M3 4h10M3 8h7M3 12h5"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+        </div>
+        <span className="font-['Syne',sans-serif] font-extrabold text-xl tracking-tight text-slate-900">
+          Atsync
+        </span>
+      </Link>
 
-            {/* CTA */}
-            <Link to="/upload" style={{
-                background: '#1d6fdc',
-                color: '#ffffff',
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 600,
-                fontSize: 14,
-                padding: '10px 22px',
-                borderRadius: 8,
-                textDecoration: 'none',
-                whiteSpace: 'nowrap',
-                transition: 'background 0.2s',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#1558b8')}
-            onMouseLeave={e => (e.currentTarget.style.background = '#1d6fdc')}>
-                Scan Resume Free
+      {/* Desktop Links (Center) */}
+      <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+        {[
+          { label: "Dashboard", to: "/dashboard" },
+          { label: "ATS Resume", to: "/upload" },
+          { label: "Insights", to: "/dashboard" },
+          { label: "Pricing", to: "/" },
+        ].map(({ label, to }) => (
+          <Link
+            key={label}
+            to={to}
+            className="font-sans text-sm font-medium text-slate-700 px-3 py-2 rounded-md transition-colors hover:bg-sky-50 hover:text-sky-500"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      {/* Desktop CTA */}
+      <div className="hidden md:block">
+        <Link
+          to="/upload"
+          className="bg-[#1d6fdc] hover:bg-[#1558b8] text-white font-sans font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+        >
+          Scan Resume Free
+        </Link>
+      </div>
+
+      {/* Mobile Hamburger Button */}
+      <button
+        className="md:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5 rounded-lg hover:bg-slate-50 transition-colors"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <div
+          className={`w-5 h-0.5 bg-slate-700 transition-transform ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
+        ></div>
+        <div
+          className={`w-5 h-0.5 bg-slate-700 transition-opacity ${isMobileMenuOpen ? "opacity-0" : ""}`}
+        ></div>
+        <div
+          className={`w-5 h-0.5 bg-slate-700 transition-transform ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+        ></div>
+      </button>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-16 left-0 right-0 bg-white border-b border-slate-200 shadow-lg flex flex-col p-4 md:hidden gap-2">
+          {[
+            { label: "Dashboard", to: "/dashboard" },
+            { label: "ATS Resume", to: "/upload" },
+            { label: "Insights", to: "/dashboard" },
+            { label: "Pricing", to: "/" },
+          ].map(({ label, to }) => (
+            <Link
+              key={label}
+              to={to}
+              className="font-sans text-base font-medium text-slate-700 p-3 rounded-lg hover:bg-sky-50 hover:text-sky-500"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {label}
             </Link>
-        </nav>
-    );
+          ))}
+          <Link
+            to="/upload"
+            className="bg-[#1d6fdc] text-white font-sans font-semibold text-center text-base p-3 rounded-lg mt-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Scan Resume Free
+          </Link>
+        </div>
+      )}
+    </nav>
+  );
 };
+
 export default Navbar;
