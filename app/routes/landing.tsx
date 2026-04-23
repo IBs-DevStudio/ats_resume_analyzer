@@ -1671,7 +1671,7 @@ export default function Landing() {
               {/* Social Media Links */}
               <div className="flex items-center gap-3 mb-4">
                 <a
-                  href="https://github.com/ikrambanadar"
+                  href="https://github.com/IBs-DevStudio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 hover:border-slate-600 transition-all"
@@ -1682,7 +1682,7 @@ export default function Landing() {
                   </svg>
                 </a>
                 <a
-                  href="https://linkedin.com/in/ikrambanadar"
+                  href="https://www.linkedin.com/in/ikrambanadarwebdev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0a66c2] hover:border-[#0a66c2] transition-all"
@@ -1693,7 +1693,7 @@ export default function Landing() {
                   </svg>
                 </a>
                 <a
-                  href="https://twitter.com/ikrambanadar"
+                  href="https://x.com/IkramBanadar"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-black hover:border-black transition-all"
