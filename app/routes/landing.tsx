@@ -595,7 +595,7 @@ export default function Landing() {
                 <div className="w-full md:w-1/3 border-r border-slate-100 flex flex-col">
                   <div className="p-6 border-b border-slate-100 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="relative w-14 h-14">
+                      <div className="relative w-25 h-25">
                         <AnimatedScore
                           score={73}
                           color="#f59e0b"
@@ -606,11 +606,11 @@ export default function Landing() {
                         <div className="font-bold text-slate-800 text-sm">
                           Self Employed{" "}
                           <span className="text-slate-400">
-                            / Full Stack Developer
+                            / Backend Developer
                           </span>
                         </div>
                         <div className="text-xs text-slate-500">
-                          Full Stack Developer Resume ⭐
+                          Ikram Banadar Resume ⭐
                         </div>
                       </div>
                     </div>
