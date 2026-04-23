@@ -290,7 +290,7 @@ export default function Landing() {
           <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 aspect-video">
             <iframe
               className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/REPLACE_WITH_YOUR_VIDEO_ID"
+              src="https://www.youtube.com/embed/6czVZjC0Ho0?si=SiLtoV1xafswEhL4"
               title="JobFit - How It Works"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -374,7 +374,7 @@ export default function Landing() {
             </button>
             <button
               onClick={() => setActiveTab("One-Click Optimize")}
-              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 ${
+              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${
                 activeTab === "One-Click Optimize"
                   ? "border-[#0b65c2] bg-blue-50 text-[#0b65c2] shadow-sm"
                   : "border-slate-200 bg-white text-slate-600 hover:border-[#0b65c2] hover:text-[#0b65c2] hover:bg-blue-50 hover:shadow-sm hover:-translate-y-0.5"
@@ -398,7 +398,7 @@ export default function Landing() {
 
             <button
               onClick={() => setActiveTab("Job Match")}
-              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 ${
+              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${
                 activeTab === "Job Match"
                   ? "border-[#0b65c2] bg-blue-50 text-[#0b65c2] shadow-sm"
                   : "border-slate-200 bg-white text-slate-600 hover:border-[#0b65c2] hover:text-[#0b65c2] hover:bg-blue-50 hover:shadow-sm hover:-translate-y-0.5"
@@ -1325,7 +1325,7 @@ export default function Landing() {
                   </p>
                   <button
                     onClick={handleGetCompleteReview}
-                    className="bg-[#0b65c2] hover:bg-[#0052a3] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:-translate-y-0.5 hover:shadow-xl w-full sm:w-auto"
+                    className="bg-[#0b65c2] hover:bg-[#0052a3] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:-translate-y-0.5 hover:shadow-xl w-full sm:w-auto cursor-pointer"
                   >
                     Get Complete Review
                   </button>
@@ -1341,7 +1341,7 @@ export default function Landing() {
               <div className="mt-8 text-center">
                 <button
                   onClick={handleGetCompleteReview}
-                  className="text-[#0b65c2] font-semibold sm:text-lg hover:underline transition-all"
+                  className="text-[#0b65c2] font-semibold sm:text-lg hover:underline transition-all cursor-pointer"
                 >
                   Or paste resume text
                 </button>
@@ -1369,7 +1369,7 @@ export default function Landing() {
             </p>
             <ul className="space-y-4 mb-8">
               <li className="flex items-center gap-3 text-slate-700 font-medium">
-                <div className="w-6 h-6 rounded-full bg-blue-100 text-[#0b65c2] flex items-center justify-center text-sm font-bold">
+                <div className="w-6 h-6 rounded-full bg-blue-100 text-[#0b65c2] flex items-center justify-center text-sm font-bold cursor-pointer">
                   ✓
                 </div>
                 One-click ATS optimization

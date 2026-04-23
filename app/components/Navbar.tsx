@@ -71,7 +71,7 @@ const Navbar = () => {
 
               <button
                 onClick={auth.signOut}
-                className="text-slate-600 hover:text-slate-900 font-semibold text-sm transition-colors border border-slate-200 px-4 py-2.5 rounded-lg hover:bg-slate-50"
+                className="text-slate-600 hover:text-slate-900 font-semibold text-sm transition-colors border border-slate-200 px-4 py-2.5 rounded-lg hover:bg-slate-50 cursor-pointer"
               >
                 Sign Out
               </button>
