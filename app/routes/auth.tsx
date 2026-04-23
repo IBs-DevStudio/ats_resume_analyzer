@@ -77,15 +77,21 @@ const Auth = () => {
                             borderRadius: 9,
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                         }}>
-                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                                <path d="M3 4h10M3 8h7M3 12h5" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                            </svg>
+                            <img
+                    src="/icons/jobfit-logo.png"
+                    alt="JobFit"
+                    className="h-15 w-auto object-contain"
+                  />
                         </div>
+                       
                         <span style={{
                             fontFamily: "'Syne', sans-serif",
                             fontWeight: 800, fontSize: 22,
                             letterSpacing: '-0.02em', color: '#0f172a',
-                        }}>JobFit</span>
+                        }}>
+                    <span className="text-black ">Job</span>
+                    <span className="text-[#0b65c2]">Fit</span>
+                  </span>
                     </div>
 
                     <h1 style={{

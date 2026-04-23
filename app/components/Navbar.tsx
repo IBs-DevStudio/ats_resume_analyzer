@@ -21,16 +21,23 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
         
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img
-            src="/icons/jobfit-logo.png"
-            alt="JobFit"
-            className="h-15 w-auto object-contain"
-          />
-          <span className="text-xl font-bold text-slate-800 tracking-tight">
-            Job<span className="text-[#0b65c2]">Fit</span> 
-          </span>
-        </Link>
+      <Link to="/" className="flex items-center gap-3">
+  <img
+    src="/icons/jobfit-logo.png"
+    alt="JobFit"
+    className="h-12 w-auto object-contain"
+  />
+
+  <div className="flex flex-col items-center leading-tight">
+    <span className="text-xl font-bold text-slate-800 tracking-tight">
+      Job<span className="text-[#0b65c2]">Fit</span>
+    </span>
+
+    <span className="text-[10px] text-slate-500">
+      by Ikram Banadar
+    </span>
+  </div>
+</Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
