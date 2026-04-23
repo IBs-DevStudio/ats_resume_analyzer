@@ -188,10 +188,16 @@ export default function Landing() {
   };
 
   const onQuickFileSelect = (file: File | null) => {
-    if (file) {
-      handleQuickAnalyze(file);
+    if (!file) return;
+    
+    // ✅ redirect to auth if not signed in
+    if (!auth.isAuthenticated) {
+        navigate('/auth?next=/upload');
+        return;
     }
-  };
+    
+    handleQuickAnalyze(file);
+};
 
   const handleGetCompleteReview = () => {
     if (!auth.isAuthenticated) {
@@ -610,7 +616,7 @@ export default function Landing() {
                           </span>
                         </div>
                         <div className="text-xs text-slate-500">
-                          Ikram Banadar Resume ⭐
+                          Ikram Resume ⭐
                         </div>
                       </div>
                     </div>
