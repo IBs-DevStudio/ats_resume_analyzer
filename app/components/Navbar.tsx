@@ -23,7 +23,7 @@ const Navbar = () => {
         {/* Logo */}
       <Link to="/" className="flex items-center gap-3">
   <img
-    src="/icons/jobfit-logo.png"
+    src="/icons/logo-jobfit.png"
     alt="JobFit"
     className="h-12 w-auto object-contain"
   />

@@ -20,7 +20,6 @@ const Resume = () => {
   const [resumeUrl, setResumeUrl] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [resumeData, setResumeData] = useState<any>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -106,7 +105,7 @@ const Resume = () => {
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
            <Link to="/" className="flex items-center gap-2">
           <img
-            src="/icons/jobfit-logo.png"
+            src="/icons/logo-jobfit.png"
             alt="JobFit"
             className="h-15 w-auto object-contain"
           />

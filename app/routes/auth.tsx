@@ -78,7 +78,7 @@ const Auth = () => {
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                         }}>
                             <img
-                    src="/icons/jobfit-logo.png"
+                    src="/icons/logo-jobfit.png"
                     alt="JobFit"
                     className="h-15 w-auto object-contain"
                   />

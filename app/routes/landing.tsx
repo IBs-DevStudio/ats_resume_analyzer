@@ -1653,7 +1653,7 @@ export default function Landing() {
               <div className="flex items-center gap-2 mb-4">
                 <Link to="/" className="flex items-center gap-2">
                   <img
-                    src="/icons/jobfit-logo.png"
+                    src="/icons/logo-jobfit.png"
                     alt="JobFit"
                     className="h-15 w-auto object-contain"
                   />
