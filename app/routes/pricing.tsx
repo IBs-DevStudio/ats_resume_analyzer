@@ -447,26 +447,19 @@ export default function Pricing() {
         <div className="max-w-7xl mx-auto px-6">
           {/* Top row */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            {/* Brand */}
-            <div className="md:col-span-1">
+           <div className="md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-[#0ea5e9] to-[#1d6fdc] rounded-lg flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    viewBox="0 0 16 16"
-                    stroke="currentColor"
-                  >
-                    <path
-                      d="M3 4h10M3 8h7M3 12h5"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </div>
-                <span className="text-white font-bold text-xl tracking-tight">
-                  JobFit
-                </span>
+                <Link to="/" className="flex items-center gap-2">
+                  <img
+                    src="/icons/jobfit-logo.png"
+                    alt="JobFit"
+                    className="h-15 w-auto object-contain"
+                  />
+                  <span className="text-xl font-bold text-slate-800 tracking-tight">
+                    <span className="text-white">Job</span>
+                    <span className="text-[#0b65c2]">Fit</span>
+                  </span>
+                </Link>
               </div>
               <p className="text-slate-400 text-sm leading-relaxed mb-4">
                 AI-powered ATS resume analyzer. Free for every job seeker,
