@@ -20,6 +20,7 @@ const Resume = () => {
   const [resumeUrl, setResumeUrl] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [resumeData, setResumeData] = useState<any>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,20 +73,7 @@ const Resume = () => {
   return (
     <main style={{ paddingTop: 0, minHeight: "100vh", background: "#f8fbff" }}>
       {/* Top navbar */}
-      <nav
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "14px 32px",
-          background: "#ffffff",
-          borderBottom: "1px solid #e2e8f0",
-          boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
-          position: "sticky",
-          top: 0,
-          zIndex: 50,
-        }}
-      >
+      <nav className="flex items-center justify-between px-4 py-3 lg:px-8 bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50 gap-3 flex-wrap">
         <Link
           to="/"
           style={{
@@ -166,33 +154,10 @@ const Resume = () => {
         )}
       </nav>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          minHeight: "calc(100vh - 64px)",
-        }}
-        className="max-lg:flex-col-reverse"
-      >
-        {/* Left — Resume Preview */}
+      <div className="flex flex-col-reverse lg:flex-row w-full min-h-[calc(100vh-64px)]">
         {/* Left — Resume Preview */}
         <div
-          style={{
-            width: "45%",
-            height: "calc(100vh - 64px)",
-            position: "sticky",
-            top: 64,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            padding: "24px 24px",
-            background: "linear-gradient(160deg, #f0f8ff 0%, #e0f2fe 100%)",
-            borderRight: "1px solid #e2e8f0",
-            overflowY: "auto",
-          }}
-          className="max-lg:w-full"
+          className="w-full lg:w-[45%] lg:h-[calc(100vh-64px)] lg:sticky lg:top-16 flex flex-col items-center justify-start p-4 sm:p-6 bg-gradient-to-br from-[#f0f8ff] to-[#e0f2fe] border-b lg:border-b-0 lg:border-r border-slate-200 overflow-y-auto"
         >
           {imageUrl ? (
             <div
@@ -204,7 +169,7 @@ const Resume = () => {
             >
               {/* Score cards — compact row */}
               {feedback && (
-                <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
+                <div className="flex flex-wrap gap-2 mb-3">
                   {[
                     { label: "Overall", score: feedback.overallScore },
                     { label: "ATS", score: feedback.ATS?.score },
@@ -213,15 +178,7 @@ const Resume = () => {
                   ].map(({ label, score }) => (
                     <div
                       key={label}
-                      style={{
-                        flex: 1,
-                        background: "#fff",
-                        border: "1px solid #e2e8f0",
-                        borderRadius: 10,
-                        padding: "6px 8px",
-                        textAlign: "center",
-                        boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                      }}
+                      className="flex-1 min-w-[70px] bg-white border border-slate-200 rounded-xl py-1.5 px-2 text-center shadow-sm"
                     >
                       <div
                         style={{
@@ -312,14 +269,7 @@ const Resume = () => {
         </div>
 
         {/* Right — Feedback */}
-        <div
-          style={{
-            flex: 1,
-            padding: "40px 32px",
-            overflowY: "auto",
-          }}
-          className="max-lg:w-full"
-        >
+        <div className="w-full lg:flex-1 min-w-0 p-6 lg:p-10 overflow-y-auto">
           {/* Header */}
           <div style={{ marginBottom: 32 }}>
             <div
@@ -414,18 +364,7 @@ const Resume = () => {
           )}
 
           {/* Footer credit */}
-          <div
-            style={{
-              marginTop: 48,
-              paddingTop: 24,
-              borderTop: "1px solid #e2e8f0",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: 8,
-            }}
-          >
+          <div className="mt-12 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
             <p style={{ fontSize: 12, color: "#94a3b8" }}>
               Analyzed by{" "}
               <span style={{ color: "#0b65c2", fontWeight: 600 }}>
