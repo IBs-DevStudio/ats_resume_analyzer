@@ -6,7 +6,7 @@ import ScoreCircle from '~/components/ScoreCircle';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Atsync — Insights" },
+    { title: "JobFit — Insights" },
     { name: "description", content: "Analytics across all your resume scans." },
   ];
 };

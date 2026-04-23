@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {useLocation, useNavigate} from "react-router";
 
 export const meta = () => ([
-    { title: 'Atsync | Sign In' },
+    { title: 'JobFit | Sign In' },
     { name: 'description', content: 'Log into your account' },
 ])
 
@@ -85,7 +85,7 @@ const Auth = () => {
                             fontFamily: "'Syne', sans-serif",
                             fontWeight: 800, fontSize: 22,
                             letterSpacing: '-0.02em', color: '#0f172a',
-                        }}>Atsync</span>
+                        }}>JobFit</span>
                     </div>
 
                     <h1 style={{
@@ -113,7 +113,7 @@ const Auth = () => {
                             fontFamily: "'Plus Jakarta Sans', sans-serif",
                             fontSize: 12, color: '#0369a1', textAlign: 'left', lineHeight: 1.5
                         }}>
-                            Atsync uses Puter for secure authentication and private file storage.
+                            JobFit uses Puter for secure authentication and private file storage.
                         </p>
                     </div>
 
