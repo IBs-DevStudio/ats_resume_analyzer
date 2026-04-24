@@ -55,7 +55,7 @@ export default function Pricing() {
     <main className="min-h-screen bg-[#f8fbff] text-slate-800 font-sans relative overflow-hidden flex flex-col">
       <Navbar />
       {/* Spacer for fixed navbar */}
-      <div style={{ height: 64 }} />
+      <div style={{ height: 44 }} />
       {/* Philosophy Banner */}
 
       {/* Animated Background */}
@@ -67,7 +67,7 @@ export default function Pricing() {
 
       {/* Philosophy Banner */}
       <div className="w-full bg-[#e0f2fe] border-b border-[#bae6fd] py-3 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="max-w-7xl mx-5 px-6 text-center">
           <p className="text-sm md:text-base font-bold text-[#0284c7] flex items-center justify-center gap-2 flex-wrap">
             <svg
               className="w-5 h-5 shrink-0"

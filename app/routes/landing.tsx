@@ -189,15 +189,15 @@ export default function Landing() {
 
   const onQuickFileSelect = (file: File | null) => {
     if (!file) return;
-    
+
     // ✅ redirect to auth if not signed in
     if (!auth.isAuthenticated) {
-        navigate('/auth?next=/upload');
-        return;
+      navigate("/auth?next=/upload");
+      return;
     }
-    
+
     handleQuickAnalyze(file);
-};
+  };
 
   const handleGetCompleteReview = () => {
     if (!auth.isAuthenticated) {
@@ -243,13 +243,22 @@ export default function Landing() {
           </div>
           <h1 className="font-serif text-5xl md:text-7xl text-[#0f2137] leading-[1.2] max-w-4xl mx-auto mb-6 tracking-tight">
             Optimize your resume to <br className="hidden md:block" />
-            <Typewriter
-              words={[
-                "get more interviews",
-                "beat the ATS bots",
-                "land your dream job",
-              ]}
-            />
+            {/* ✅ fixed height container stops page jumping */}
+            <span
+              style={{
+                display: "inline-block",
+                minHeight: "1.2em",
+                minWidth: "10ch",
+              }}
+            >
+              <Typewriter
+                words={[
+                  "get more interviews",
+                  "beat the ATS bots",
+                  "land your dream job",
+                ]}
+              />
+            </span>
           </h1>
           <p className="text-xl md:text-2xl text-[#34495e] max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
             Stop guessing why you're getting rejected. Our AI scans your resume
@@ -273,7 +282,6 @@ export default function Landing() {
         </FadeIn>
       </section>
 
-      
       {/* How It Works Section */}
       <section id="how-it-works" className="py-20 px-4 bg-white">
         <FadeIn className="max-w-5xl mx-auto text-center">
@@ -284,7 +292,8 @@ export default function Landing() {
             See How It Works
           </h2>
           <p className="text-slate-600 text-lg mb-10 max-w-2xl mx-auto">
-            Watch how JobFit scans your resume, detects ATS issues, and helps you land more interviews in under a minute.
+            Watch how JobFit scans your resume, detects ATS issues, and helps
+            you land more interviews in under a minute.
           </p>
 
           <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 aspect-video">
@@ -300,19 +309,34 @@ export default function Landing() {
 
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
             <div className="bg-[#f4f9ff] rounded-xl p-6 border border-blue-100">
-              <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">1</div>
+              <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">
+                1
+              </div>
               <h3 className="font-bold text-slate-800 mb-2">Upload Resume</h3>
-              <p className="text-sm text-slate-600">Drop your PDF or DOCX resume. Our AI reads and parses every section instantly.</p>
+              <p className="text-sm text-slate-600">
+                Drop your PDF or DOCX resume. Our AI reads and parses every
+                section instantly.
+              </p>
             </div>
             <div className="bg-[#f4f9ff] rounded-xl p-6 border border-blue-100">
-              <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">2</div>
+              <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">
+                2
+              </div>
               <h3 className="font-bold text-slate-800 mb-2">AI Analysis</h3>
-              <p className="text-sm text-slate-600">Claude 4.5 Sonnet scans for ATS keywords, tone, structure, and missing skills.</p>
+              <p className="text-sm text-slate-600">
+                Claude 4.5 Sonnet scans for ATS keywords, tone, structure, and
+                missing skills.
+              </p>
             </div>
             <div className="bg-[#f4f9ff] rounded-xl p-6 border border-blue-100">
-              <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">3</div>
+              <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">
+                3
+              </div>
               <h3 className="font-bold text-slate-800 mb-2">Get Results</h3>
-              <p className="text-sm text-slate-600">Receive your ATS score, actionable fixes, and a polished resume in seconds.</p>
+              <p className="text-sm text-slate-600">
+                Receive your ATS score, actionable fixes, and a polished resume
+                in seconds.
+              </p>
             </div>
           </div>
         </FadeIn>
@@ -1332,8 +1356,83 @@ export default function Landing() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 mx-4 sm:mx-0">
+              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 mx-4 sm:mx-0 relative">
                 <FileUploader onFileSelect={onQuickFileSelect} />
+                {!auth.isAuthenticated && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(248,251,255,0.88)",
+                      backdropFilter: "blur(4px)",
+                      borderRadius: 16,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 12,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 48,
+                        height: 48,
+                        background: "#e0f2fe",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#0b65c2"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      >
+                        <rect x="3" y="11" width="18" height="11" rx="2" />
+                        <path d="M7 11V7a5 5 0 0110 0v4" />
+                      </svg>
+                    </div>
+                    <p
+                      style={{
+                        fontWeight: 700,
+                        fontSize: 15,
+                        color: "#0f172a",
+                      }}
+                    >
+                      Sign in to scan your resume
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        color: "#64748b",
+                        textAlign: "center",
+                        maxWidth: 240,
+                      }}
+                    >
+                      Free forever — just sign in with Puter to get started.
+                    </p>
+                    <button
+                      onClick={() => navigate("/auth?next=/upload")}
+                      style={{
+                        background: "#0b65c2",
+                        color: "#fff",
+                        fontWeight: 700,
+                        fontSize: 14,
+                        padding: "10px 28px",
+                        borderRadius: 9,
+                        border: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Sign In Free →
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 
@@ -1677,8 +1776,12 @@ export default function Landing() {
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 hover:border-slate-600 transition-all"
                   aria-label="GitHub"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
                 </a>
                 <a
@@ -1688,8 +1791,12 @@ export default function Landing() {
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#0a66c2] hover:border-[#0a66c2] transition-all"
                   aria-label="LinkedIn"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                   </svg>
                 </a>
                 <a
@@ -1699,8 +1806,12 @@ export default function Landing() {
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-black hover:border-black transition-all"
                   aria-label="X (Twitter)"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
                 <a
@@ -1710,8 +1821,12 @@ export default function Landing() {
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-[#ff0000] hover:border-[#ff0000] transition-all"
                   aria-label="YouTube"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </a>
                 <a
@@ -1721,8 +1836,12 @@ export default function Landing() {
                   className="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:bg-gradient-to-br hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent transition-all"
                   aria-label="Instagram"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                  <svg
+                    className="w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
                   </svg>
                 </a>
               </div>
