@@ -212,7 +212,7 @@ export default function Landing() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 flex flex-col items-center text-center px-4 overflow-hidden z-0">
+      <section className="relative pt-22 pb-10 lg:pt-28 lg:pb-24 flex flex-col items-center text-center px-4 overflow-hidden z-0">
         {/* Animated Background Blobs & Grid */}
         <div className="absolute inset-0 -z-10 overflow-hidden bg-[#f4f9ff]">
           <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-sky-200/40 mix-blend-multiply filter blur-[80px] animate-blob"></div>
@@ -241,6 +241,7 @@ export default function Landing() {
               Powered by Claude 4.5 Sonnet
             </div>
           </div>
+
           <h1 className="font-serif text-5xl md:text-7xl text-[#0f2137] leading-[1.2] max-w-4xl mx-auto mb-6 tracking-tight">
             Optimize your resume to <br className="hidden md:block" />
             {/* ✅ fixed height container stops page jumping */}
