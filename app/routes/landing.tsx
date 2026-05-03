@@ -268,16 +268,10 @@ export default function Landing() {
             </h3>
             {/* Supporting Message */}
             <p className="text-lg md:text-xl text-[#34495e] max-w-2xl mx-auto leading-relaxed font-medium">
-              Stop guessing why you're getting rejected. Scan your resume
-              against any job description and get an instant ATS score with
-              actionable fixes.
-              <span className="block mt-2 text-base text-[#7f8c8d] font-normal">
-                <span className="block mt-2 text-base text-[#7f8c8d] font-normal">
-                  Most ATS tools like Jobscan and ResumeWorded lock this behind
-                  a paid paywall. Not here.
-                </span>
-              </span>
-            </p>
+  Stop guessing why you're getting rejected. Scan your resume against any
+  job description and instant ATS score with actionable fixes —{" "}
+<span className="text-[#0b65c2] font-bold">free.</span>
+</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none">
             <Link
