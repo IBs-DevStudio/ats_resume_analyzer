@@ -258,15 +258,13 @@ export default function Landing() {
                   "beat the ATS bots",
                   "land your dream job",
                 ]}
+                
               />
             </span>
           </h1>
        <div className="text-center mb-10">
   {/* Main Hook */}
-  <h2 className="text-xl font-bold mb-4">
-    Free forever. No paywall. No credit card.
-  </h2>
-
+  <h3    className="font-bold text-3xl mb-4 text-[#0b65c2]">Free forever. No paywall. No credit card.</h3> 
   {/* Supporting Message */}
   <p className="text-lg md:text-xl text-[#34495e] max-w-2xl mx-auto leading-relaxed font-medium">
     Stop guessing why you're getting rejected. Scan your resume against any job description and get an instant ATS score with actionable fixes.
