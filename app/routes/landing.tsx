@@ -261,11 +261,17 @@ export default function Landing() {
               />
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-[#34495e] max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
-            Stop guessing why you're getting rejected. Our AI scans your resume
-            against job descriptions to give you an instant ATS score and
-            actionable fixes.
-          </p>
+       <div className="text-center mb-10">
+  {/* Main Hook */}
+  <h2 className="text-xl font-bold mb-4">
+    Free forever. No paywall. No credit card.
+  </h2>
+
+  {/* Supporting Message */}
+  <p className="text-lg md:text-xl text-[#34495e] max-w-2xl mx-auto leading-relaxed font-medium">
+    Stop guessing why you're getting rejected. Scan your resume against any job description and get an instant ATS score with actionable fixes.
+  </p>
+</div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none">
             <Link
               to="/upload"
