@@ -177,7 +177,8 @@ export default function Landing() {
           ? feedback.message.content
           : feedback.message.content[0].text;
 
-      const result = JSON.parse(feedbackText);
+      const cleaned = feedbackText.replace(/```json\n?|```/g, "").trim();
+      const result = JSON.parse(cleaned);
       setQuickResult(result);
     } catch (e) {
       console.error(e);
@@ -242,9 +243,10 @@ export default function Landing() {
             </div>
           </div>
 
-          <h1 className="font-serif text-5xl md:text-7xl text-[#0f2137] leading-[1.2] max-w-4xl mx-auto mb-6 tracking-tight">
+          <h1 className="font-serif text-[clamp(1.75rem,6vw,4.5rem)] md:text-7xl text-[#0f2137] leading-[1.2] max-w-4xl mx-auto mb-6 tracking-tight">
+
             Optimize your resume to <br className="hidden md:block" />
-            {/* ✅ fixed height container stops page jumping */}
+           
             <span
               style={{
                 display: "inline-block",
@@ -268,10 +270,10 @@ export default function Landing() {
             </h3>
             {/* Supporting Message */}
             <p className="text-lg md:text-xl text-[#34495e] max-w-2xl mx-auto leading-relaxed font-medium">
-  Stop guessing why you're getting rejected. Scan your resume against any
-  job description and instant ATS score with actionable fixes —{" "}
-<span className="text-[#0b65c2] font-bold">free.</span>
-</p>
+              Stop guessing why you're getting rejected. Scan your resume
+              against any job description and instant ATS score with actionable
+              fixes — <span className="text-[#0b65c2] font-bold">free.</span>
+            </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none">
             <Link
