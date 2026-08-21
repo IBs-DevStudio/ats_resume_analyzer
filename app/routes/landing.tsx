@@ -226,7 +226,7 @@ export default function Landing() {
             className="absolute bottom-[-12%] left-[5%] sm:left-[20%] w-[360px] h-[360px] sm:w-[600px] sm:h-[600px] rounded-full bg-sky-100/50 mix-blend-multiply filter blur-[80px] animate-blob"
             style={{ animationDelay: "4s" }}
           ></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-60"></div>
         </div>
 
         <FadeIn
