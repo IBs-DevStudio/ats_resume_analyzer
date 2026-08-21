@@ -250,6 +250,7 @@ export default function Landing() {
             <span
               className="hidden md:inline-block"
               style={{
+                display: "inline-block",
                 minHeight: "1.2em",
                 minWidth: "10ch",
               }}
