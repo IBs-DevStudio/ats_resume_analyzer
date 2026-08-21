@@ -248,8 +248,8 @@ export default function Landing() {
             Optimize your resume to <br className="hidden md:block" />
            
             <span
+              className="hidden md:inline-block"
               style={{
-                display: "inline-block",
                 minHeight: "1.2em",
                 minWidth: "10ch",
               }}
@@ -261,6 +261,10 @@ export default function Landing() {
                   "land your dream job",
                 ]}
               />
+            </span>
+            <span className="inline-block md:hidden text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-[#0b65c2] relative pb-1">
+              land your dream job
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-sky-400 to-[#0b65c2] rounded-full"></span>
             </span>
           </h1>
           <div className="text-center mb-10">
@@ -1718,7 +1722,7 @@ export default function Landing() {
             </span>
           </h2>
           <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl px-6 py-5 md:px-10 md:py-8 shadow-2xl backdrop-blur-md w-full max-w-2xl min-h-[100px] flex items-center justify-center">
-            <span className="text-xl md:text-3xl font-mono text-sky-400 font-semibold tracking-tight">
+            <span className="hidden md:inline text-xl md:text-3xl font-mono text-sky-400 font-semibold tracking-tight">
               <Typewriter
                 words={[
                   "Analyzing tone and style...",
@@ -1728,6 +1732,36 @@ export default function Landing() {
                 ]}
               />
             </span>
+            <div className="grid grid-cols-2 gap-3 w-full max-w-md md:hidden text-sky-300/90 font-mono text-xs">
+              <div className="flex items-center gap-2 px-3 py-2.5 bg-slate-900/60 border border-slate-700/40 rounded-xl">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                </span>
+                <span>Tone & Style</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-2.5 bg-slate-900/60 border border-slate-700/40 rounded-xl">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                </span>
+                <span>ATS Keywords</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-2.5 bg-slate-900/60 border border-slate-700/40 rounded-xl">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                </span>
+                <span>Resume Score</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-2.5 bg-slate-900/60 border border-slate-700/40 rounded-xl">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                </span>
+                <span>Improvement Tips</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
