@@ -247,14 +247,7 @@ export default function Landing() {
 
             Optimize your resume to <br className="hidden md:block" />
            
-            <span
-              className="hidden md:inline-block"
-              style={{
-                display: "inline-block",
-                minHeight: "1.2em",
-                minWidth: "10ch",
-              }}
-            >
+            <span className="hidden md:inline-block min-h-[1.2em] min-w-[10ch]">
               <Typewriter
                 words={[
                   "get more interviews",
