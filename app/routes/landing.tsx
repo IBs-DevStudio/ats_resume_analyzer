@@ -5,6 +5,7 @@ import { usePuterStore } from "~/lib/puter";
 import FileUploader from "~/components/FileUploader";
 import { prepareMinimalInstructions } from "../../constants";
 import ScoreCircle from "~/components/ScoreCircle";
+import JobFitVideo from "~/components/JobFitVideo";
 const FadeIn = ({
   children,
   delay = 0,
@@ -209,20 +210,20 @@ export default function Landing() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f9ff] text-slate-800 font-sans overflow-x-hidden selection:bg-sky-200 selection:text-sky-900">
+    <div className="min-h-screen bg-[#f4f9ff] text-slate-800 font-sans overflow-x-hidden selection:bg-sky-200 selection:text-sky-900 [font-family:Inter,ui-sans-serif,system-ui,sans-serif]">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-22 pb-10 lg:pt-28 lg:pb-24 flex flex-col items-center text-center px-4 overflow-hidden z-0">
+      <section className="relative pt-22 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-24 flex flex-col items-center text-center px-4 sm:px-6 overflow-hidden z-0">
         {/* Animated Background Blobs & Grid */}
         <div className="absolute inset-0 -z-10 overflow-hidden bg-[#f4f9ff]">
-          <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-sky-200/40 mix-blend-multiply filter blur-[80px] animate-blob"></div>
+          <div className="absolute top-[-12%] left-[-28%] sm:left-[-10%] w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full bg-sky-200/40 mix-blend-multiply filter blur-[80px] animate-blob"></div>
           <div
-            className="absolute top-[20%] right-[-10%] w-[400px] h-[400px] rounded-full bg-blue-200/40 mix-blend-multiply filter blur-[80px] animate-blob"
+            className="absolute top-[25%] right-[-28%] sm:right-[-10%] w-[260px] h-[260px] sm:w-[400px] sm:h-[400px] rounded-full bg-blue-200/40 mix-blend-multiply filter blur-[80px] animate-blob"
             style={{ animationDelay: "2s" }}
           ></div>
           <div
-            className="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] rounded-full bg-sky-100/50 mix-blend-multiply filter blur-[80px] animate-blob"
+            className="absolute bottom-[-12%] left-[5%] sm:left-[20%] w-[360px] h-[360px] sm:w-[600px] sm:h-[600px] rounded-full bg-sky-100/50 mix-blend-multiply filter blur-[80px] animate-blob"
             style={{ animationDelay: "4s" }}
           ></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30"></div>
@@ -243,11 +244,17 @@ export default function Landing() {
             </div>
           </div>
 
-          <h1 className="font-serif text-[clamp(1.75rem,6vw,4.5rem)] md:text-7xl text-[#0f2137] leading-[1.2] max-w-4xl mx-auto mb-6 tracking-tight">
+          <h1 className="font-sans text-[1.95rem] leading-[1.08] sm:text-[2.5rem] sm:leading-[1.12] md:text-7xl md:leading-[1.15] text-[#0f2137] max-w-4xl mx-auto mb-5 sm:mb-6 tracking-[-0.03em]">
 
-            Optimize your resume to <br className="hidden md:block" />
-           
-            <span className="hidden md:inline-block min-h-[1.2em] min-w-[10ch]">
+            Optimize your resume <br className="hidden md:block" />
+
+            <span
+              className="hidden md:inline-block"
+              style={{
+                minHeight: "1.2em",
+                minWidth: "10ch",
+              }}
+            >
               <Typewriter
                 words={[
                   "get more interviews",
@@ -256,33 +263,33 @@ export default function Landing() {
                 ]}
               />
             </span>
-            <span className="inline-block md:hidden text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-[#0b65c2] relative pb-1">
+            {/* <span className="inline-block md:hidden text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-[#0b65c2] relative pb-1">
               land your dream job
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-sky-400 to-[#0b65c2] rounded-full"></span>
-            </span>
+            </span> */}
           </h1>
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 sm:mb-10 max-w-2xl px-1">
             {/* Main Hook */}
-            <h3 className="font-bold text-3xl mb-4 text-[#0b65c2]">
+            <h3 className="font-bold text-xl sm:text-2xl md:text-3xl leading-tight mb-3 sm:mb-4 text-[#0b65c2]">
               Free forever. No paywall. No credit card.
             </h3>
             {/* Supporting Message */}
-            <p className="text-lg md:text-xl text-[#34495e] max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-[15px] sm:text-base md:text-xl text-[#34495e] max-w-2xl mx-auto leading-relaxed font-medium">
               Stop guessing why you're getting rejected. Scan your resume
               against any job description and instant ATS score with actionable
               fixes — <span className="text-[#0b65c2] font-bold">free.</span>
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md sm:max-w-none">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full max-w-md sm:max-w-none px-1">
             <Link
               to="/upload"
-              className="inline-flex px-8 py-4 bg-[#0b65c2] hover:bg-[#0052a3] text-white rounded-lg font-bold text-xl transition-all shadow-md w-full sm:w-auto justify-center"
+              className="inline-flex px-6 sm:px-8 py-3.5 sm:py-4 bg-[#0b65c2] hover:bg-[#0052a3] text-white rounded-xl font-bold text-base sm:text-lg md:text-xl transition-all shadow-md w-full sm:w-auto justify-center min-h-12"
             >
               Scan Your Resume For Free
             </Link>
             <a
               href="#how-it-works"
-              className="inline-flex px-8 py-4 bg-transparent border-2 border-[#0b65c2] text-[#0b65c2] hover:bg-blue-50 rounded-lg font-bold text-xl transition-all w-full sm:w-auto justify-center"
+              className="inline-flex px-6 sm:px-8 py-3.5 sm:py-4 bg-transparent border-2 border-[#0b65c2] text-[#0b65c2] hover:bg-blue-50 rounded-xl font-bold text-base sm:text-lg md:text-xl transition-all w-full sm:w-auto justify-center min-h-12"
             >
               See How It Works
             </a>
@@ -291,32 +298,23 @@ export default function Landing() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 px-4 bg-white">
+      <section id="how-it-works" className="py-14 sm:py-20 px-4 sm:px-6 bg-white">
         <FadeIn className="max-w-5xl mx-auto text-center">
           <div className="text-xs font-bold text-[#0b65c2] uppercase tracking-widest mb-3">
             Quick Walkthrough
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0f2137] mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0f2137] mb-3 sm:mb-4 tracking-tight">
             See How It Works
           </h2>
-          <p className="text-slate-600 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-slate-600 text-[15px] sm:text-base md:text-lg mb-7 sm:mb-10 max-w-2xl mx-auto leading-relaxed">
             Watch how JobFit scans your resume, detects ATS issues, and helps
             you land more interviews in under a minute.
           </p>
 
-          <div className="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 aspect-video">
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/6czVZjC0Ho0?si=SiLtoV1xafswEhL4"
-              title="JobFit - How It Works"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
+          <JobFitVideo />
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
-            <div className="bg-[#f4f9ff] rounded-xl p-6 border border-blue-100">
+          <div className="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-left max-w-4xl mx-auto">
+            <div className="bg-[#f4f9ff] rounded-xl p-4 sm:p-6 border border-blue-100">
               <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">
                 1
               </div>
@@ -326,7 +324,7 @@ export default function Landing() {
                 section instantly.
               </p>
             </div>
-            <div className="bg-[#f4f9ff] rounded-xl p-6 border border-blue-100">
+            <div className="bg-[#f4f9ff] rounded-xl p-4 sm:p-6 border border-blue-100">
               <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">
                 2
               </div>
@@ -336,7 +334,7 @@ export default function Landing() {
                 missing skills.
               </p>
             </div>
-            <div className="bg-[#f4f9ff] rounded-xl p-6 border border-blue-100">
+            <div className="bg-[#f4f9ff] rounded-xl p-4 sm:p-6 border border-blue-100">
               <div className="w-10 h-10 rounded-full bg-[#0b65c2] text-white flex items-center justify-center font-bold text-lg mb-4">
                 3
               </div>
@@ -351,20 +349,19 @@ export default function Landing() {
       </section>
 
       {/* All-in-One Platform Section */}
-      <section className="py-16 px-4 bg-[#f4f9ff]">
+      <section className="py-14 sm:py-16 px-4 sm:px-6 bg-[#f4f9ff]">
         <FadeIn className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0f2137] mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0f2137] mb-6 sm:mb-8 tracking-tight">
             Everything You Need to Beat the ATS
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-2.5 sm:gap-4 mb-8 sm:mb-12">
             <button
               onClick={() => setActiveTab("Match Report")}
-              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 ${
-                activeTab === "Match Report"
+              className={`px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full border font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all duration-200 ${activeTab === "Match Report"
                   ? "border-[#0b65c2] bg-blue-50 text-[#0b65c2] shadow-sm"
                   : "border-slate-200 bg-white text-slate-600 hover:border-[#0b65c2] hover:text-[#0b65c2] hover:bg-blue-50 hover:shadow-sm hover:-translate-y-0.5"
-              }`}
+                }`}
             >
               <svg
                 className="w-4 h-4"
@@ -383,11 +380,10 @@ export default function Landing() {
             </button>
             <button
               onClick={() => setActiveTab("AI Insights")}
-              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${
-                activeTab === "AI Insights"
+              className={`px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full border font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${activeTab === "AI Insights"
                   ? "border-[#0b65c2] bg-blue-50 text-[#0b65c2] shadow-sm scale-105"
                   : "border-slate-200 bg-white text-slate-600 hover:border-[#0b65c2] hover:text-[#0b65c2] hover:bg-blue-50 hover:shadow-sm hover:-translate-y-0.5"
-              }`}
+                }`}
             >
               <svg
                 className="w-4 h-4"
@@ -406,11 +402,10 @@ export default function Landing() {
             </button>
             <button
               onClick={() => setActiveTab("One-Click Optimize")}
-              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${
-                activeTab === "One-Click Optimize"
+              className={`px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full border font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${activeTab === "One-Click Optimize"
                   ? "border-[#0b65c2] bg-blue-50 text-[#0b65c2] shadow-sm"
                   : "border-slate-200 bg-white text-slate-600 hover:border-[#0b65c2] hover:text-[#0b65c2] hover:bg-blue-50 hover:shadow-sm hover:-translate-y-0.5"
-              }`}
+                }`}
             >
               <svg
                 className="w-4 h-4"
@@ -430,11 +425,10 @@ export default function Landing() {
 
             <button
               onClick={() => setActiveTab("Job Match")}
-              className={`px-6 py-2.5 rounded-full border font-semibold text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${
-                activeTab === "Job Match"
+              className={`px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full border font-semibold text-xs sm:text-sm flex items-center gap-2 transition-all duration-200 cursor-pointer ${activeTab === "Job Match"
                   ? "border-[#0b65c2] bg-blue-50 text-[#0b65c2] shadow-sm"
                   : "border-slate-200 bg-white text-slate-600 hover:border-[#0b65c2] hover:text-[#0b65c2] hover:bg-blue-50 hover:shadow-sm hover:-translate-y-0.5"
-              }`}
+                }`}
             >
               <svg
                 className="w-4 h-4"
@@ -454,10 +448,10 @@ export default function Landing() {
           </div>
 
           {/* Dashboard Mockup Container */}
-          <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200 overflow-hidden mx-auto max-w-5xl text-left">
+          <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200 overflow-hidden mx-auto max-w-5xl text-left w-full">
             {activeTab === "Match Report" && (
               <>
-                <div className="border-b border-slate-100 px-6 py-3 flex justify-between items-center text-sm">
+                <div className="border-b border-slate-100 px-4 sm:px-6 py-3 flex justify-between items-center text-xs sm:text-sm gap-3">
                   <div>
                     <span className="text-slate-500 font-semibold text-xs uppercase tracking-wide">
                       Resume scan results
@@ -503,7 +497,7 @@ export default function Landing() {
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row">
-                  <div className="w-full md:w-1/4 border-r border-slate-100 p-6 flex flex-col items-center">
+                  <div className="w-full md:w-1/4 border-r border-slate-100 p-4 sm:p-6 flex flex-col items-center">
                     <h3 className="font-bold text-lg text-slate-800 mb-4">
                       Match Rate
                     </h3>
@@ -568,9 +562,9 @@ export default function Landing() {
                       </div>
                     </div>
                   </div>
-                  <div className="w-full md:w-3/4 bg-slate-50 p-6">
+                  <div className="w-full md:w-3/4 bg-slate-50 p-4 sm:p-6">
                     <div className="flex border-b border-slate-200 mb-6">
-                      <button className="px-8 py-3 font-bold text-slate-800 border-b-2 border-slate-800">
+                      <button className="px-4 sm:px-8 py-3 font-bold text-sm sm:text-base text-slate-800 border-b-2 border-slate-800">
                         Resume
                       </button>
                       <button className="px-8 py-3 font-semibold text-slate-500 hover:text-slate-700 bg-slate-200/50 w-full text-left">
@@ -666,7 +660,7 @@ export default function Landing() {
             )}
 
             {activeTab === "One-Click Optimize" && (
-              <div className="flex flex-col md:flex-row h-[600px]">
+              <div className="flex flex-col md:flex-row min-h-[520px] md:h-[600px]">
                 <div className="w-full md:w-1/3 border-r border-slate-100 flex flex-col">
                   <div className="p-6 border-b border-slate-100 flex items-center justify-between">
                     <div className="flex items-center gap-4">
@@ -910,7 +904,7 @@ export default function Landing() {
                   </div>
 
                   <div className="flex-1 p-12 overflow-y-auto bg-white relative">
-                    <h2 className="text-3xl font-serif text-slate-800 mb-2">
+                    <h2 className="text-3xl font-sans text-slate-800 mb-2">
                       Ikram Banadar
                     </h2>
                     <p className="text-sm text-slate-500 mb-8">
@@ -1025,7 +1019,7 @@ export default function Landing() {
             )}
 
             {activeTab === "Job Match" && (
-              <div className="p-12 text-center h-[500px] flex flex-col items-center justify-center">
+              <div className="p-6 sm:p-10 md:p-12 text-center min-h-[420px] md:h-[500px] flex flex-col items-center justify-center">
                 <div className="w-20 h-20 bg-blue-50 text-[#0b65c2] rounded-full flex items-center justify-center mb-6">
                   <svg
                     className="w-10 h-10"
@@ -1047,7 +1041,7 @@ export default function Landing() {
                   🚧 Coming Soon
                 </span>
 
-                <h3 className="text-2xl font-bold text-slate-800 mb-3">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-3">
                   AI Job Match
                 </h3>
 
@@ -1252,16 +1246,16 @@ export default function Landing() {
       </section>
 
       {/* 3x More Interview Callbacks */}
-      <section className="py-20 px-4 bg-[#f8fbff] border-y border-slate-100">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 bg-[#f8fbff] border-y border-slate-100">
         <FadeIn className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0f2137] mb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0f2137] mb-3 tracking-tight">
             <span className="text-[#0b65c2]">3x</span> More Interview Callbacks
           </h2>
-          <p className="text-lg text-[#0f2137] font-semibold mb-12">
+          <p className="text-base sm:text-lg text-[#0f2137] font-semibold mb-8 sm:mb-12">
             Get your free resume score
           </p>
 
-          <div className="flex justify-center items-center gap-4 mb-12 text-sm font-semibold">
+          <div className="flex justify-center items-start gap-2 sm:gap-4 mb-8 sm:mb-12 text-xs sm:text-sm font-semibold">
             <FadeIn
               delay={0}
               className="flex flex-col items-center gap-2 relative z-10"
@@ -1273,7 +1267,7 @@ export default function Landing() {
             </FadeIn>
             <FadeIn
               delay={200}
-              className="w-16 md:w-24 border-t border-slate-200 mt-[-24px]"
+              className="w-8 sm:w-16 md:w-24 border-t border-slate-200 mt-[-24px]"
             ></FadeIn>
             <FadeIn
               delay={400}
@@ -1286,7 +1280,7 @@ export default function Landing() {
             </FadeIn>
             <FadeIn
               delay={600}
-              className="w-16 md:w-24 border-t border-slate-200 mt-[-24px]"
+              className="w-8 sm:w-16 md:w-24 border-t border-slate-200 mt-[-24px]"
             ></FadeIn>
             <FadeIn
               delay={800}
@@ -1301,13 +1295,13 @@ export default function Landing() {
 
           <FadeIn delay={1000} className="w-full max-w-4xl mx-auto">
             {isQuickAnalyzing ? (
-              <div className="bg-white rounded-xl p-16 sm:p-24 flex flex-col items-center justify-center shadow-sm border border-slate-100 mx-4 sm:mx-0">
+              <div className="bg-white rounded-xl p-10 sm:p-16 md:p-24 flex flex-col items-center justify-center shadow-sm border border-slate-100 mx-2 sm:mx-0">
                 <img
                   src="/images/resume-scan.gif"
                   alt="Scanning"
                   className="w-32 mb-6 mix-blend-multiply opacity-80"
                 />
-                <h3 className="text-xl font-bold text-[#0f2137] mb-2">
+                <h3 className="text-lg sm:text-xl font-bold text-[#0f2137] mb-2 text-center">
                   {quickStatus}
                 </h3>
                 <p className="text-slate-500 animate-pulse">
@@ -1315,10 +1309,10 @@ export default function Landing() {
                 </p>
               </div>
             ) : quickResult ? (
-              <div className="bg-white rounded-xl p-8 sm:p-12 flex flex-col items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 mx-4 sm:mx-0 relative overflow-hidden">
+              <div className="bg-white rounded-xl p-5 sm:p-8 md:p-12 flex flex-col items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 mx-4 sm:mx-0 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-sky-400 to-[#0b65c2]"></div>
 
-                <h3 className="text-2xl font-bold text-[#0f2137] mb-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0f2137] mb-6 sm:mb-8">
                   Your Quick Scan Results
                 </h3>
 
@@ -1364,7 +1358,7 @@ export default function Landing() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-4 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 mx-4 sm:mx-0 relative">
+              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-3 sm:p-6 md:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 mx-4 sm:mx-0 relative">
                 <FileUploader onFileSelect={onQuickFileSelect} />
                 {!auth.isAuthenticated && (
                   <div
@@ -1445,7 +1439,7 @@ export default function Landing() {
             )}
 
             {!isQuickAnalyzing && !quickResult && (
-              <div className="mt-8 text-center">
+              <div className="mt-6 sm:mt-8 text-center">
                 <button
                   onClick={handleGetCompleteReview}
                   className="text-[#0b65c2] font-semibold sm:text-lg hover:underline transition-all cursor-pointer"
@@ -1459,17 +1453,17 @@ export default function Landing() {
       </section>
 
       {/* Section 5 — Resume Optimization */}
-      <section className="py-24 px-4 bg-white overflow-hidden">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 sm:gap-16">
           <div className="w-full md:w-1/2 text-left">
             <div className="text-sm font-bold text-[#0b65c2] tracking-wider uppercase mb-4">
               Resume Optimization
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0f2137] mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0f2137] mb-5 sm:mb-6 leading-tight tracking-tight">
               Show that you're the <br className="hidden md:block" />
               perfect match
             </h2>
-            <p className="text-xl text-slate-600 leading-relaxed mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed mb-6 sm:mb-8">
               Our AI scans your resume and highlights exactly what you need to
               change. Add missing skills, rephrase bullet points, and fix
               formatting issues with a single click.
@@ -1565,13 +1559,13 @@ export default function Landing() {
       </section>
 
       {/* Section 6 — Missing Skills */}
-      <section className="py-24 px-4 bg-[#f8fbff] overflow-hidden">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row-reverse items-center gap-16">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#f8fbff] overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row-reverse items-center gap-10 sm:gap-16">
           <div className="w-full md:w-1/2 text-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0f2137] mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#0f2137] mb-5 sm:mb-6 leading-tight tracking-tight">
               See your missing skills
             </h2>
-            <p className="text-xl text-slate-600 leading-relaxed mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed mb-6 sm:mb-8">
               Our ATS algorithm identifies the exact keywords and hard skills
               you are missing from the job description. Add them to your resume
               to instantly boost your match rate and pass the initial screening.
@@ -1691,10 +1685,10 @@ export default function Landing() {
       </section>
 
       {/* Section 7 — Powered by Claude */}
-      <section className="py-32 px-4 bg-[#0f172a] text-center relative overflow-hidden">
+      <section className="py-20 sm:py-32 px-4 sm:px-6 bg-[#0f172a] text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-sky-500/20 rounded-[100%] blur-[120px] pointer-events-none"></div>
         <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
-          <div className="w-20 h-20 bg-slate-800/80 rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_60px_rgba(14,165,233,0.4)] border border-slate-700/50 backdrop-blur-sm">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-slate-800/80 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 shadow-[0_0_60px_rgba(14,165,233,0.4)] border border-slate-700/50 backdrop-blur-sm">
             <svg
               className="w-10 h-10 text-sky-400"
               fill="none"
@@ -1709,13 +1703,13 @@ export default function Landing() {
               />
             </svg>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-8 sm:mb-12 tracking-tight">
             Powered by Claude 4.5 Sonnet{" "}
             <span className="text-slate-400 font-light block sm:inline mt-2 sm:mt-0 text-2xl md:text-4xl">
               by Anthropic
             </span>
           </h2>
-          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl px-6 py-5 md:px-10 md:py-8 shadow-2xl backdrop-blur-md w-full max-w-2xl min-h-[100px] flex items-center justify-center">
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl px-4 py-4 sm:px-6 sm:py-5 md:px-10 md:py-8 shadow-2xl backdrop-blur-md w-full max-w-2xl min-h-[100px] flex items-center justify-center">
             <span className="hidden md:inline text-xl md:text-3xl font-mono text-sky-400 font-semibold tracking-tight">
               <Typewriter
                 words={[
@@ -1761,19 +1755,19 @@ export default function Landing() {
       </section>
 
       {/* Section 8 — CTA Banner */}
-      <section className="py-24 px-4 bg-gradient-to-r from-sky-400 to-[#0b65c2] text-center relative overflow-hidden">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-r from-sky-400 to-[#0b65c2] text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
         <div className="max-w-4xl mx-auto text-white relative z-10">
-          <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+          <h2 className="font-sans text-3xl sm:text-4xl md:text-6xl font-bold mb-5 sm:mb-6 tracking-tight">
             Ready to get more interviews?
           </h2>
-          <p className="text-xl md:text-2xl text-blue-50 mb-12 max-w-2xl mx-auto font-medium">
+          <p className="text-base sm:text-lg md:text-2xl text-blue-50 mb-8 sm:mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
             Join over 2 million job seekers who have successfully used JobFit to
             land their dream jobs.
           </p>
           <Link
             to="/upload"
-            className="inline-block px-12 py-5 bg-white text-[#0b65c2] hover:bg-slate-50 rounded-xl font-bold text-xl md:text-2xl transition-all shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1"
+            className="inline-block w-full sm:w-auto px-7 sm:px-12 py-4 sm:py-5 bg-white text-[#0b65c2] hover:bg-slate-50 rounded-xl font-bold text-base sm:text-xl md:text-2xl transition-all shadow-2xl hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1"
           >
             Scan Your Resume For Free
           </Link>
@@ -1784,7 +1778,7 @@ export default function Landing() {
       <footer className="w-full bg-[#0f172a] border-t border-slate-800 py-16 relative z-10 mt-auto">
         <div className="max-w-7xl mx-auto px-6">
           {/* Top row */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
             {/* Brand */}
             <div className="md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
@@ -1996,6 +1990,12 @@ export default function Landing() {
         }
         .animate-blob {
           animation: blob 7s infinite;
+        }
+        @media (max-width: 767px) {
+          .animate-blob { animation: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
         }
       `}</style>
     </div>
