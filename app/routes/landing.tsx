@@ -275,10 +275,11 @@ export default function Landing() {
             </h3>
             {/* Supporting Message */}
             <p className="text-[15px] sm:text-base md:text-xl text-[#34495e] max-w-2xl mx-auto leading-relaxed font-medium">
-              Stop guessing why you're getting rejected. Scan your resume
-              against any job description and instant ATS score with actionable
-              fixes — <span className="text-[#0b65c2] font-bold">free.</span>
-            </p>
+  Unlike Jobscan and similar tools that limit free scans and paywall real
+  fixes, <span className="text-[#0b65c2] font-bold">JobFit</span> gives you
+  the full instant ATS score with actionable fixes —{" "}
+  <span className="text-[#0b65c2] font-bold">unlimited and free.</span>
+</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full max-w-md sm:max-w-none px-1">
             <Link
