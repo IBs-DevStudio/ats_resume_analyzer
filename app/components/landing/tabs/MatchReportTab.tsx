@@ -1,4 +1,4 @@
-import AnimatedScore from "~/components/shared/AnimatedScore";
+import AnimatedScore from "~/components/ui/AnimatedScore";
 
 const SEARCHABILITY_ROWS = [
   { label: "Searchability", note: "1 issue to fix", pct: 80, noteColor: "text-[#0b65c2]", barColor: "bg-[#0b65c2]" },

@@ -1,4 +1,4 @@
-import AnimatedScore from "~/components/shared/AnimatedScore";
+import AnimatedScore from "~/components/ui/AnimatedScore";
 
 const HARD_SKILLS = [
   { label: "Technical program management", matched: true, aiSuggested: true, meta: "2/3" },

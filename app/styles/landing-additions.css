@@ -1,0 +1,57 @@
+/* ── Add this block to your existing app/app.css ──────────────────────── */
+
+/* Optional distinct display face for headings — Sora pairs well with a
+   default sans body. Skip this @import if you'd rather keep system fonts;
+   just remove the font-display utility below too. */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&display=swap");
+
+.font-display {
+  font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Utility for horizontally-scrollable rows (e.g. tab bars) without a
+   visible scrollbar. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+/* Background blobs are decorative only — turn them off on small screens
+   to save paint/animation cost on lower-powered devices. */
+@media (max-width: 767px) {
+  .animate-blob {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
