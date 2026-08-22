@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import FadeIn from "~/components/ui/FadeIn";
+import ScanProgressSteps from "~/components/landing/ScanProgressSteps";
 import { usePuterStore } from "~/lib/puter";
 import FileUploader from "~/components/FileUploader";
 import ScoreCircle from "~/components/ScoreCircle";
 import { prepareMinimalInstructions } from "../../../constants";
-
-const STEPS = [
-  { number: 1, label: "Upload Resume", active: true },
-  { number: 2, label: "Add Job", active: false },
-  { number: 3, label: "View Results", active: false },
-];
 
 interface QuickScanSectionProps {
   onGetCompleteReview: () => void;
@@ -26,6 +21,8 @@ export default function QuickScanSection({ onGetCompleteReview }: QuickScanSecti
   const [isQuickAnalyzing, setIsQuickAnalyzing] = useState(false);
   const [quickResult, setQuickResult] = useState<{ score: number; tip: string } | null>(null);
   const [quickStatus, setQuickStatus] = useState("");
+
+  const currentStep: 1 | 2 | 3 = quickResult ? 3 : isQuickAnalyzing ? 2 : 1;
 
   const handleQuickAnalyze = async (file: File) => {
     setIsQuickAnalyzing(true);
@@ -73,21 +70,7 @@ export default function QuickScanSection({ onGetCompleteReview }: QuickScanSecti
           Get your free resume score
         </p>
 
-        <div className="flex justify-center items-start gap-2 sm:gap-4 mb-8 sm:mb-12 text-xs sm:text-sm font-semibold">
-          {STEPS.map((step, i) => (
-            <FadeIn key={step.number} delay={i * 400} className="flex flex-col items-center gap-2 relative z-10">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-lg ${step.active
-                    ? "bg-[#0b65c2] text-white shadow-md"
-                    : "border border-slate-200 text-slate-300 bg-[#f8fbff]"
-                  }`}
-              >
-                {step.number}
-              </div>
-              <span className={step.active ? "text-slate-800" : "text-slate-300 font-normal"}>{step.label}</span>
-            </FadeIn>
-          ))}
-        </div>
+        <ScanProgressSteps currentStep={currentStep} />
 
         <FadeIn delay={1000} className="w-full max-w-4xl mx-auto">
           {isQuickAnalyzing ? (
